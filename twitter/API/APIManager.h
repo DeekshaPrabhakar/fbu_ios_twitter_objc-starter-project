@@ -15,5 +15,6 @@
 + (instancetype)shared;
 - (void)getHomeTimelineWithCompletion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void)favorite:(Tweet *)tweet completion:(void(^)(Tweet *tweet, NSError *error))completion;
+- (void)composeTweetWith: (NSString *)text completion:(void(^)(Tweet *tweet, NSError *error))completion;
 
 @end

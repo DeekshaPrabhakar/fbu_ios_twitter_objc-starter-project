@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "User.h"
 
 @interface AppDelegate ()
 
@@ -21,12 +22,20 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:@"didLogout" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         NSLog(@"Logout notification received");
         // TODO: Load and show the login view controller
+    }];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    if(User.current != nil){
+        UIViewController *homeTimelineViewController = [storyboard instantiateViewControllerWithIdentifier:@"TweetsNavigationController"];
         
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window.rootViewController = homeTimelineViewController;
+    }
+    else{
+        
         UIViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
         
         self.window.rootViewController = loginViewController;
-    }];
+    }
     
     return YES;
 }
@@ -57,6 +66,5 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 
 @end

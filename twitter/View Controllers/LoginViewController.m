@@ -28,11 +28,29 @@
 - (IBAction)didTapLogin:(id)sender {
     [[APIManager shared] loginWithCompletion:^(BOOL success, NSError *error) {
         if (success) {
+            [self currentAccount:^(User *user, NSError *error) {
+                if(user){
+                    User.current = user;
+                }
+            }];
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (void)currentAccount:(void (^)(User *, NSError *))completion{
+    [[APIManager shared] GET:@"1.1/account/verify_credentials.json"
+   parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable userDictionary) {
+       
+       User *user = [[User alloc]initWithDictionary:userDictionary];
+       completion(user, nil);
+       
+   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+       
+       completion(nil, error);
+   }];
 }
 
 /*

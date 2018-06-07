@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@class User;
+//@class User;
+#import "User.h"
 
 @interface Tweet : NSObject
 

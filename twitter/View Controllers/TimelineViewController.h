@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ComposeViewController.h"
+#import "TweetCell.h"
+#import "ProfileViewController.h"
 
-@interface TimelineViewController : UIViewController
+@interface TimelineViewController : UIViewController<ComposeViewControllerDelegate, TweetCellDelegate>
 
 @end

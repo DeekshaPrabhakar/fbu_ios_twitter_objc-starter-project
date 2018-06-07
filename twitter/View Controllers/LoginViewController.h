@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface LoginViewController : UIViewController
-
+- (void)currentAccount: (void(^)(User *user, NSError *error))completion;
 @end

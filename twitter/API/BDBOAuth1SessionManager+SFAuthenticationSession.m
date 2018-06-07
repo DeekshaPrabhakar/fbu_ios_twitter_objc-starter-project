@@ -78,6 +78,8 @@
                                                                // Store access token
                                                                [self.requestSerializer saveAccessToken:accessToken];
                                                                
+                                                              
+                                                               
                                                                // Call success
                                                                if (completion) { completion(true, error); }
                                                                
