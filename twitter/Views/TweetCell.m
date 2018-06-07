@@ -38,12 +38,6 @@ Tweet *_tweet = nil;
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-//    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
-//    [self.profileImageView setUserInteractionEnabled:YES];
-//    [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
-}
-
--(void)viewDidLoad{
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
     [self.profileImageView setUserInteractionEnabled:YES];
     [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
